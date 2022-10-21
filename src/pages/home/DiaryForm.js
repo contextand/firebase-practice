@@ -20,6 +20,8 @@ export default function DiaryForm({ uid }) {
     addDocument({ uid, title, text });
   };
 
+  // 일단 추가
+
   return (
     <>
       <form onSubmit={handleSubmit}>
