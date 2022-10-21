@@ -20,7 +20,7 @@ export default function DiaryForm({ uid }) {
     addDocument({ uid, title, text });
   };
 
-  // 일단 추가
+  // 일단 추가 일단 이걸로 PR 추가?
 
   return (
     <>
