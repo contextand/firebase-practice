@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useFirestore } from "../../hooks/useFirestore";
 
 export default function DiaryForm({ uid }) {
@@ -14,13 +14,18 @@ export default function DiaryForm({ uid }) {
     }
   };
 
+  useEffect(() => {
+    if (response.success) {
+      setText("");
+      setTitle("");
+    }
+  }, [response.success]);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(title, text);
     addDocument({ uid, title, text });
   };
-
-  // 일단 추가 일단 이걸로 PR 추가?
 
   return (
     <>
@@ -28,12 +33,19 @@ export default function DiaryForm({ uid }) {
         <fieldset>
           <legend>일기 쓰기</legend>
           <label htmlFor="tit">일기 제목 : </label>
-          <input id="tit" type="text" required onChange={handleData} />
+          <input
+            id="tit"
+            type="text"
+            value={title}
+            required
+            onChange={handleData}
+          />
 
           <label htmlFor="txt">일기 내용 : </label>
           <textarea
             id="txt"
             type="text"
+            value={text}
             required
             onChange={handleData}
           ></textarea>
