@@ -18,7 +18,7 @@ export const useCollection = (transaction, myQuery) => {
       q = query(
         collection(appFireStore, transaction),
         where(...myQuery),
-        orderBy("createTime", "desc")
+        orderBy("createdTime", "desc")
       );
     }
 
